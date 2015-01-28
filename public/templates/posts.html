@@ -1,9 +1,22 @@
 <div class="page-header">
 	<h3>
-	<a href="#/home"><span class="glyphicon glyphicon-th-large"></span></a>
-	<a href="{{ post.link }}" ng-show="post.link">{{ post.title }}</a>
-	<span ng-hide="post.link">{{ post.title }}</span>
+	<a href="#/home"><span class="fa fa-reply"></span></a> take me back
 	</h3>
+</div>
+<div class="prompt-wrapper">
+	<div class="row">
+		<div class="col-sm-2 votes-wrapper">
+			<span class="vote-button fa fa-arrow-up" ng-click="incrementUpvotes(post)"></span>
+			<span class="vote-count">{{ post.upvotes }}</span>	
+			<span class="vote-button fa fa-arrow-down" ng-click="decrementUpvotes(post)"></span>			
+		</div>
+		<div class="col-sm-10">
+			<span style="font-size: 20px; margin-left:10px;">
+			<h2 ng-show="post.link" href="{{ post.link }}"> {{ post.title }} </h2>
+			<h2 ng-hide="post.link"> {{ post.title }}</h2>
+			</span>
+		</div>
+	</div>
 </div>
 <form ng-submit="addComment()" style="margin-top:30px;">
 	<h3>Add a new comment </h3>
