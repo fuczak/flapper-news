@@ -1,73 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Writing Prompts</title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/stylesheets/style.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
-	<script src="/javascripts/angularApp.js"></script>
-	<style>
-		.glyphicon { cursor: pointer; }
-	</style>
-</head>
-<body ng-app="flapperNews">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">	
-
-			<ui-view></ui-view>
-		</div>
-	</div>
-
-	<script type="text/ng-template" id="/home.html">
-
-			<div class="page-header">
-				<h1>writing<em><b>prompts</b></em></h1>
+	<head>
+		<meta charset="UTF-8">
+		<title>Writing Prompts</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+		<script src="/javascripts/angularApp.js"></script>
+		<style>
+			.glyphicon { cursor: pointer; }
+			.glyphicon-pencil { left: -0.1em; top: -0.32em; }
+		</style>
+	</head>
+	<body ng-app="flapperNews">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<ui-view></ui-view>
 			</div>
-
-			<div ng-repeat="post in posts | orderBy: '-upvotes'">
-				<span class="glyphicon glyphicon-arrow-up" ng-click="incrementUpvotes(post)"></span> {{ post.upvotes }}
-				<span style="font-size: 20px; margin-left:10px;">
-					<a ng-show="post.link" href="{{ post.link }}"> {{ post.title }} </a>
-					<span ng-hide="post.link"> {{ post.title }}</span>
-				</span>
-				<span><a href="#/posts/{{post._id}}">Comments {{post.comments.length}}</a></span>
-			</div>
-	
-			<form ng-submit="addPost()" style="margin-top:30px;">
-				<h3>Add a new prompt</h3>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Title" ng-model="title"></input>
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Link" ng-model="link"></input>
-				</div>
-				<button type="submit" class="btn btn-primary">Post</button>
-			</form>
-	</script>
-	<script type="text/ng-template" id="/posts.html">
-		<div class="page-header">
-			<h3>
-				<a href="#/home"><span class="glyphicon glyphicon-th-large"></span></a>
-				<a href="{{ post.link }}" ng-show="post.link">{{ post.title }}</a>				
-				<span ng-hide="post.link">{{ post.title }}</span>
-			</h3>
 		</div>
-		<form ng-submit="addComment()" style="margin-top:30px;">
-			<h3>Add a new comment </h3>
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
-			</div>
-			<button type="submit" class="btn btn-primary">Post</button>
-		</form>
-		<div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
-			<span class="glyphicon-arrow-up glyphicon" ng-click="incrementUpvotes(comment)"></span>
-			{{ comment.upvotes }} - by {{ comment.author }}
-			<span style="font-size:20px; margin-left:10px;">
-				{{ comment.body }}
-			</span>
-		</div>
-	</script>
-</body>
-</html>
+	</html>
