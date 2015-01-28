@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = reqiore('mongoose');
+var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -60,6 +60,7 @@ app.use(function(err, req, res, next) {
 mongoose.connect('mongodb://admin:1234@ds039231.mongolab.com:39231/news')
 require('./models/Posts');
 require('./models/Comments');
+
 
 
 module.exports = app;
